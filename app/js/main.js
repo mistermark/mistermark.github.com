@@ -1,5 +1,0 @@
-(function() {
-
-    console.info('window');
-
-})();
