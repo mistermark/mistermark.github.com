@@ -1,10 +1,11 @@
+/* global jQuery, Handlebars */
 /**
  * FlickrHeist photo plugin
  */
 (function($){
 
     $.fn.flickrHeist = function(options) {
-        "use strict";
+        'use strict';
 
         var settings = $.extend({}, $.fn.flickrHeist.defaults, options);
 
@@ -39,7 +40,7 @@
                 'format': FLICKR.FORMAT,
                 'nojsoncallback': '1',
                 'photo_id': null
-            }            
+            }
         };
 
         //-- Plugin system vars
@@ -60,7 +61,7 @@
         /**
          * Start this party!
          */
-        var _init = function(data) {
+        var _init = function() {
             vars.status = 'initialized';
             _fetchPhotos();
         };
@@ -81,7 +82,7 @@
          * Are we running 'debug' here?
          */
         var _theBugger = function () {
-            if(window.location.search.indexOf("flickrheist=debug")) {
+            if(window.location.search.indexOf('flickrheist=debug')) {
                 settings.debug++;
             }
             if (settings.debug === true) {
@@ -132,7 +133,7 @@
                     url: vars.photoSearchUrl,
                     dataType: 'json',
                     data: JSON,
-                    error: function(data, error, res) {
+                    error: function(data, error) {
                         throw new Error(error);
                     },
                     success: function(data) {
@@ -173,7 +174,7 @@
                 url: photoInfoUrl,
                 dataType: 'json',
                 data: JSON,
-                error: function(data, error, res) {
+                error: function(data, error) {
                     throw new Error(error);
                 },
                 success: function(data) {

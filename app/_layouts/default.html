@@ -12,6 +12,10 @@
         <link href="/css/base.css" media="screen, projection" rel="stylesheet" type="text/css" />
         <!-- endbuild -->
 
+        <!-- build:js(app) /js/vendor/jquery.min.js -->
+        <script src="/_bower_components/jquery/jquery.js"></script>
+        <!-- endbuild -->
+
         <!-- build:js(app) /js/head-scripts.js -->
         <script src="/js/main.js"></script>
         <!-- endbuild -->
@@ -44,10 +48,10 @@
           </div>
         </div>
 
+        {% include googleanalytics.html %}
         <!-- build:js(app) /js/footer-scripts.js -->
         {% include scripts.html %}
         <!-- endbuild -->
-        {% include googleanalytics.html %}
 
     </body>
 </html>
