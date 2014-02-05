@@ -17,6 +17,11 @@ module.exports = function(grunt) {
       build: 'build',
       temp: '.tmp'
     },
+    vendor: {
+        jquery: '<%= dir.app %>/jquery.js',
+        modernizr: '<%= dir.app %>/modernizr.js',
+        normalize: '<%= dir.app %>/normalize.css'
+    },
 
     watch: {
       // WATCH THE SASS FILES FOR CHANGES AND COMPILE WITH COMPASS
@@ -31,7 +36,7 @@ module.exports = function(grunt) {
       jekyll: {
         files: [
           '<%= dir.app %>/**/*.{html,yml,md,mkd,markdown}',
-          '<%= dir.app %>/_bower_components/**/*'
+          '!<%= dir.app %>/_bower_components/**/*'
         ],
         tasks: ['jekyll:server']
       },
@@ -57,7 +62,7 @@ module.exports = function(grunt) {
       },
       livereload: {
         options: {
-          open: true,
+          open: false,
           base: [
             '.tmp',
             '.jekyll',
@@ -128,7 +133,7 @@ module.exports = function(grunt) {
 
     /**
      * Jekyll build and config
-     * 
+     *
      * @type server = development
      * @type dist = production
      * @type check = validation
@@ -280,7 +285,8 @@ module.exports = function(grunt) {
             // Like Jekyll, exclude files & folders prefixed with an underscore.
             '!**/_*{,/**}',
             // Explicitly add any files your site needs for distribution here.
-            '_bower_components/**/*.js',
+            // '_bower_components/jquery/jquery.js',
+            // '_bower_components/modernizr/modernizr.js',
             'favicon.ico',
             'apple-touch*.png'
           ],
@@ -316,8 +322,9 @@ module.exports = function(grunt) {
     },
 
     buildcontrol: {
-      dist: {
+      deploy: {
         options: {
+          dir: 'build',
           remote: 'git@github.com:mistermark/mistermark.github.com.git',
           branch: 'master',
           commit: true,
@@ -364,7 +371,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('serve', function (target) {
-    if (target === 'dist') {
+    if (target === 'build') {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
     }
     grunt.task.run([
