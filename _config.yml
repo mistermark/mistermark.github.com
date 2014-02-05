@@ -4,6 +4,10 @@ author:
   name: Mr.Mark
   email: mark@markdejong.com
 
+source: app
+destination: build
+timezone: Europe/Amsterdam
+
 # Markdown library
 markdown: redcarpet
 extensions: ['fenced_code_blocks', 'smart']
@@ -13,7 +17,7 @@ pygments: true
 exclude: ['node_modules', 'img', 'css', 'js', 'fonts',
           '**.png', '**.jpg', '**.jpeg', '**.gif', '**.webp', '**.svg', '**.ico']
 include: ['.htaccess']
-          
+
 # _config.build.yml sets future and show_drafts to false on `grunt build`
 future: true
 show_drafts: true
