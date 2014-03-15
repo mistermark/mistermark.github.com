@@ -1,8 +1,10 @@
 name: Jekyll + GruntJS
 description: Testing Jekyll + GruntJS
+url: http://www.markdejong.com
 author:
   name: Mr.Mark
   email: mark@markdejong.com
+generator: jekyll 1.4.3
 
 source: app
 destination: build

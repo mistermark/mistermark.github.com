@@ -27,7 +27,7 @@ module.exports = function(grunt) {
       // WATCH THE SASS FILES FOR CHANGES AND COMPILE WITH COMPASS
       compass: {
         files: ['<%= dir.app %>/_scss/**/*.{scss,sass}'],
-        tasks: ['copy:css'] //compass:server
+        tasks: ['compass:dev'] //compass:server
       },
       autoprefixer: {
         files: ['<%= dir.app %>/css/**/*.css'],
@@ -395,7 +395,7 @@ module.exports = function(grunt) {
     'jekyll:check',
     'compass:dev',
     'jshint:all',
-    'csslint:check'
+    // 'csslint:check'
   ]);
 
   grunt.registerTask('build', [
