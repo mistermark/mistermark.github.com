@@ -15,3 +15,5 @@ coverage
 .sass-cache
 node_modules
 .tmp
+.jekyll
+app/_bower_components

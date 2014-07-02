@@ -1,0 +1,47 @@
+/*
+ * BOURBON/NEAT SETTINGS
+**/
+
+$max-width: em(1088);
+$max-width-article: 960px;
+
+
+/**
+ * BREAKPOINTS
+**/
+
+$mobile: new-breakpoint(max-width 480px 6);
+
+
+/**
+ * THEME SETTINGS
+**/
+$fi-path: "../_bower_components/foundation-icon-fonts";
+
+$sidebar-width: 4;
+$content-width: 8;
+$article-width: 6;
+
+$primary-color: rgb(0,152,116);
+
+
+/** TYPOGRAPHY **/
+@include font-face("Trend Ornaments", "../fonts/trend-ornaments/trend-ornaments-webfont");
+$calluna-sans: "calluna-sans-1", "calluna-sans-2", "Helvetica Nueue", "Helvetica", Arial, sans-serif;
+$calluna-serif: "calluna-1", "calluna-2", "Georgia", "Times New Roman", Georgia, sans-serif;
+$font-size: 18;
+
+
+$body-font-family: $calluna-serif;
+$header-font-family: $calluna-sans;
+$header-font-weight: 600;
+$header-color: $primary-color;
+
+$bordercolor: #dededc;
+$greyed-out: lighten(#000, 50%);
+
+$link-color: #009973;
+$link-hover-color: lighten($link-color, 5%);
+$link-active-color: $link-hover-color;
+$link-visited-color: darken($link-color, 5%);
+$link-focus-color: $link-hover-color;

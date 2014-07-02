@@ -15,3 +15,144 @@
 2014-01-29 10:58:13 identical app/css/syntax.css 
 2014-01-29 11:34:25    create app/css/base.css 
 2014-01-29 11:34:25 identical app/css/print.css 
+2014-03-13 19:48:03    create app/css/base.css 
+2014-03-13 19:48:03    create app/css/print.css 
+2014-03-13 19:48:15 identical app/css/base.css 
+2014-03-13 21:13:06 overwrite app/css/base.css 
+2014-03-13 21:13:11    remove .sass-cache/ 
+2014-03-13 21:13:11    remove app/css/base.css 
+2014-03-13 21:13:11    remove app/css/print.css 
+2014-03-13 21:13:15    create app/css/base.css 
+2014-03-13 21:13:15    create app/css/print.css 
+2014-03-13 21:14:12 overwrite app/css/base.css 
+2014-03-13 21:14:23    remove .sass-cache/ 
+2014-03-13 21:14:23    remove app/css/base.css 
+2014-03-13 21:14:23    remove app/css/print.css 
+2014-03-13 21:14:25    create app/css/base.css 
+2014-03-13 21:14:25    create app/css/print.css 
+2014-03-14 08:37:48 overwrite app/css/base.css 
+2014-03-14 08:38:18     error app/_scss/base.scss (Line 10: File to import not found or unreadable: zurb-foundation.
+Load paths:
+  /Users/mark/Code/markdejong.com/mistermark.github.com/app/_scss
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_0.12/compass-0.12.2/frameworks/blueprint/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_0.12/compass-0.12.2/frameworks/compass/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/compass-960-plugin-0.10.4/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/compass-h5bp-0.1.1/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/compass-normalize-1.4.3/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/bootstrap-sass-2.3.2.1/vendor/assets/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/susy-1.0.9/sass
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/zurb-foundation-4.3.1/scss
+  Compass::SpriteImporter
+  /vendor/assets/stylesheets)
+2014-03-14 08:38:18 overwrite app/css/base.css 
+2014-03-14 08:38:18 identical app/css/print.css 
+2014-03-14 08:39:24     error app/_scss/base.scss (Line 10: File to import not found or unreadable: {$pathFoundation}/foundation.scss.
+Load paths:
+  /Users/mark/Code/markdejong.com/mistermark.github.com/app/_scss
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_0.12/compass-0.12.2/frameworks/blueprint/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_0.12/compass-0.12.2/frameworks/compass/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/compass-960-plugin-0.10.4/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/compass-h5bp-0.1.1/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/compass-normalize-1.4.3/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/bootstrap-sass-2.3.2.1/vendor/assets/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/susy-1.0.9/sass
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/zurb-foundation-4.3.1/scss
+  Compass::SpriteImporter
+  /vendor/assets/stylesheets)
+2014-03-14 08:39:24 overwrite app/css/base.css 
+2014-03-14 08:39:24 identical app/css/print.css 
+2014-03-14 08:39:45     error app/_scss/base.scss (Line 10: File to import not found or unreadable: ${pathFoundation}/foundation.scss.
+Load paths:
+  /Users/mark/Code/markdejong.com/mistermark.github.com/app/_scss
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_0.12/compass-0.12.2/frameworks/blueprint/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_0.12/compass-0.12.2/frameworks/compass/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/compass-960-plugin-0.10.4/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/compass-h5bp-0.1.1/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/compass-normalize-1.4.3/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/bootstrap-sass-2.3.2.1/vendor/assets/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/susy-1.0.9/sass
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/zurb-foundation-4.3.1/scss
+  Compass::SpriteImporter
+  /vendor/assets/stylesheets)
+2014-03-14 08:39:45 overwrite app/css/base.css 
+2014-03-14 08:39:45 identical app/css/print.css 
+2014-03-14 08:40:11     error app/_scss/base.scss (Line 10: Invalid CSS after "@import ": expected file to import (string or url()), was "$pathFoundation";")
+2014-03-14 08:40:11 overwrite app/css/base.css 
+2014-03-14 08:40:11 identical app/css/print.css 
+2014-03-14 08:40:13     error app/_scss/base.scss (Line 10: Invalid CSS after "@import ": expected file to import (string or url()), was "$pathFoundation;")
+2014-03-14 08:40:13 overwrite app/css/base.css 
+2014-03-14 08:40:13 identical app/css/print.css 
+2014-03-14 08:40:28     error app/_scss/base.scss (Line 10: Invalid CSS after "@import ": expected file to import (string or url()), was "$pathFoundation;")
+2014-03-14 08:40:28 identical app/css/base.css 
+2014-03-14 08:40:28 identical app/css/print.css 
+2014-03-14 08:40:47     error app/_scss/base.scss (Line 10: Invalid CSS after "@import ": expected file to import (string or url()), was "{$pathFoundation};")
+2014-03-14 08:40:47 overwrite app/css/base.css 
+2014-03-14 08:40:47 identical app/css/print.css 
+2014-03-14 08:40:52     error app/_scss/base.scss (Line 10: File to import not found or unreadable: {$pathFoundation}.
+Load paths:
+  /Users/mark/Code/markdejong.com/mistermark.github.com/app/_scss
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_0.12/compass-0.12.2/frameworks/blueprint/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_0.12/compass-0.12.2/frameworks/compass/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/compass-960-plugin-0.10.4/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/compass-h5bp-0.1.1/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/compass-normalize-1.4.3/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/bootstrap-sass-2.3.2.1/vendor/assets/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/susy-1.0.9/sass
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/zurb-foundation-4.3.1/scss
+  Compass::SpriteImporter
+  /vendor/assets/stylesheets)
+2014-03-14 08:40:52 overwrite app/css/base.css 
+2014-03-14 08:40:52 identical app/css/print.css 
+2014-03-14 08:41:01     error app/_scss/base.scss (Line 10: File to import not found or unreadable: $pathFoundation.
+Load paths:
+  /Users/mark/Code/markdejong.com/mistermark.github.com/app/_scss
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_0.12/compass-0.12.2/frameworks/blueprint/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_0.12/compass-0.12.2/frameworks/compass/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/compass-960-plugin-0.10.4/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/compass-h5bp-0.1.1/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/compass-normalize-1.4.3/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/bootstrap-sass-2.3.2.1/vendor/assets/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/susy-1.0.9/sass
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/zurb-foundation-4.3.1/scss
+  Compass::SpriteImporter
+  /vendor/assets/stylesheets)
+2014-03-14 08:41:01 overwrite app/css/base.css 
+2014-03-14 08:41:01 identical app/css/print.css 
+2014-03-14 08:41:35     error app/_scss/base.scss (Line 10: File to import not found or unreadable: compass/grid.
+Load paths:
+  /Users/mark/Code/markdejong.com/mistermark.github.com/app/_scss
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_0.12/compass-0.12.2/frameworks/blueprint/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_0.12/compass-0.12.2/frameworks/compass/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/compass-960-plugin-0.10.4/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/compass-h5bp-0.1.1/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/compass-normalize-1.4.3/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/bootstrap-sass-2.3.2.1/vendor/assets/stylesheets
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/susy-1.0.9/sass
+  /Applications/compass.app/Contents/Resources/lib/ruby/compass_extensions/zurb-foundation-4.3.1/scss
+  Compass::SpriteImporter
+  /vendor/assets/stylesheets)
+2014-03-14 08:41:35 overwrite app/css/base.css 
+2014-03-14 08:41:35 identical app/css/print.css 
+2014-03-14 08:41:45 overwrite app/css/base.css 
+2014-03-14 08:41:45 identical app/css/print.css 
+2014-03-14 08:42:54 overwrite app/css/base.css 
+2014-03-14 08:42:55 identical app/css/grid.css 
+2014-03-14 08:42:55 identical app/css/print.css 
+2014-03-14 08:42:55 identical app/css/text.css 
+2014-03-14 08:43:04 overwrite app/css/base.css 
+2014-03-14 08:43:04 identical app/css/grid.css 
+2014-03-14 08:43:04 identical app/css/print.css 
+2014-03-14 08:43:04 identical app/css/text.css 
+2014-03-14 08:43:26 overwrite app/css/base.css 
+2014-03-14 08:43:26 identical app/css/grid.css 
+2014-03-14 08:43:26 identical app/css/print.css 
+2014-03-14 08:43:26 identical app/css/text.css 
+2014-03-14 08:43:50 overwrite app/css/base.css 
+2014-03-14 08:43:51 identical app/css/grid.css 
+2014-03-14 08:43:51 identical app/css/print.css 
+2014-03-14 08:43:51 identical app/css/text.css 
+2014-03-27 18:27:13    create app/css/base.css 
+2014-04-01 16:17:22 overwrite app/css/base.css 
+2014-04-01 16:17:29    remove .sass-cache/ 
+2014-04-01 16:17:29    remove app/css/base.css 
+2014-04-01 16:17:31    create app/css/base.css 

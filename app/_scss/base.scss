@@ -1,9 +1,15 @@
-@import "compass";
+// $fi-path: "../_bower_components/foundation-icon-fonts";
 
-@import "screen";
+@import "meyer_reset";
+// @import "compass-core";
+@import "bourbon";
+@import "neat";
+@import "zeitgeist-variables";
+@import "zeitgeist-layout";
+
+/* THEME STYLES */
+@import "../_bower_components/foundation-icon-fonts/foundation-icons";
+@import "zeitgeist-cosmetics";
+
+/* SYNTAX HIGHLIGHTING */
 @import "syntax";
-
-body {
-  font-family: "Helvetica", "Arial", sans-serif;
-  // font-size: @defaultFontSize;
-}

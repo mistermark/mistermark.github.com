@@ -25,9 +25,13 @@ module.exports = function(grunt) {
 
     watch: {
       // WATCH THE SASS FILES FOR CHANGES AND COMPILE WITH COMPASS
-      compass: {
-        files: ['<%= dir.app %>/_scss/**/*.{scss,sass}'],
-        tasks: ['compass:dev'] //compass:server
+      // compass: {
+      //   files: ['<%= dir.app %>/_scss/**/*.{scss,sass}'],
+      //   tasks: ['compass:dev'] //compass:server
+      // },
+      sass: {
+        files: ['<%= dir.app %>/_scss/**/*.scss'],
+        tasks: ['sass:dev']
       },
       autoprefixer: {
         files: ['<%= dir.app %>/css/**/*.css'],
@@ -50,6 +54,12 @@ module.exports = function(grunt) {
           '{.tmp,<%= dir.app %>}/js/**/*.js',
           '<%= dir.app %>/img/**/*.{gif,jpg,jpeg,png,svg,webp}'
         ]
+      }
+    },
+
+    bowerInstall: {
+      target: {
+        src: '<%= dir.app %>/index.html' // point to your HTML file.
       }
     },
 
@@ -151,7 +161,7 @@ module.exports = function(grunt) {
       },
       server: {
         options: {
-          config: '_config.yml',
+          config: '_config.yml,_config.dev.yml',
           drafts: true,
           dest: '.jekyll'
         }
@@ -169,34 +179,68 @@ module.exports = function(grunt) {
      * @type dev = development [default]
      * @type prod = production build
      */
-    compass: {
+    // compass: {
+    //   options: {
+    //     bundleExec: true,
+    //     // basePath: '<%= dir.app %>',
+    //     require: ['normalize-scss', 'susy'],
+    //     sassDir: ['<%= dir.app %>/_scss'],
+    //     cssDir: ['.tmp/css'],
+    //     imagesDir: '<%= dir.app %>/img',
+    //     javascriptsDir: '<%= dir.app %>/js',
+    //     relativeAssets: false,
+    //     httpImagesPath: '/img',
+    //     httpGeneratedImagesPath: '/img/generated'
+    //   },
+    //   dev: {
+    //     options: {
+    //       environment: 'development',
+    //       outputStyle: 'expanded',
+    //       force: true,
+    //       debugInfo: true,
+    //       generatedImagesDir: '.tmp/img/generated'
+    //     }
+    //   },
+    //   prod: {
+    //     options: {
+    //       environment: 'production',
+    //       outputStyle: 'compressed',
+    //       generatedImagesDir: '<%= dir.build %>/img/generated'
+    //     }
+    //   }
+    // },
+
+    sass: {
       options: {
         bundleExec: true,
-        // basePath: '<%= dir.app %>',
-        sassDir: ['<%= dir.app %>/_scss'],
-        cssDir: ['.tmp/css'],
-        imagesDir: '<%= dir.app %>/img',
-        javascriptsDir: '<%= dir.app %>/js',
-        relativeAssets: false,
-        httpImagesPath: '/img',
-        httpGeneratedImagesPath: '/img/generated'
+        require: ['bourbon', 'neat'],
       },
       dev: {
+        files: {
+          '.tmp/css/base.css': '<%= dir.app %>/_scss/base.scss'
+        },
+        environment: 'development',
+        style: 'expanded',
+        // debugInfo: true,
+        check: true,
         options: {
-          environment: 'development',
-          outputStyle: 'expanded',
-          force: true,
-          debugInfo: true,
-          generatedImagesDir: '.tmp/img/generated'
+          trace: true
         }
       },
-      prod: {
-        options: {
-          environment: 'production',
-          outputStyle: 'compressed',
-          generatedImagesDir: '<%= dir.build %>/img/generated'
-        }
-      }
+      // prod: {
+      //   options: {
+      //     environment: 'production',
+      //     style: 'compressed'
+      //   }
+      // },
+      // check: {
+      //   options: {
+      //     style: 'expanded',
+      //     debugInfo: true,
+      //     check: true,
+      //     trace: true
+      //   }
+      // }
     },
 
     useminPrepare: {
@@ -358,12 +402,12 @@ module.exports = function(grunt) {
 
     concurrent: {
       server: [
-        'compass:dev',
+        'sass:dev',
         'copy:stageCss',
         'jekyll:server'
       ],
       dist: [
-        'compass:prod',
+        'sass:prod',
         'copy:dist'
       ]
     }
@@ -393,7 +437,7 @@ module.exports = function(grunt) {
   grunt.registerTask('check', [
     'clean:server',
     'jekyll:check',
-    'compass:dev',
+    'sass:dev',
     'jshint:all',
     // 'csslint:check'
   ]);

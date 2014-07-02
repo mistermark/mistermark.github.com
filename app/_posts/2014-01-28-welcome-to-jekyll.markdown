@@ -2,7 +2,8 @@
 layout: post
 title:  "Welcome to Jekyll!"
 date:   2014-01-28 19:05:38
-categories: jekyll update
+categories: Jekyll
+tags:   tellus elit justo
 ---
 
 You'll find this post in your `_posts` directory - edit this post and re-build (or run with the `-w` switch) to see your changes!

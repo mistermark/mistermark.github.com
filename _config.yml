@@ -1,9 +1,15 @@
-name: Jekyll + GruntJS
-description: Testing Jekyll + GruntJS
+name: Mark de Jong
+description: Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
 url: http://www.markdejong.com
 author:
-  name: Mr.Mark
+  name: Mark de Jong
+  title: Front-end Dev and Founder of Dapper &amp; some
   email: mark@markdejong.com
+  bio: Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas faucibus mollis interdum.
+  avatar: img/assets/963783_10151409603996606_654139616_200x200.png
+social:
+  facebook: https://www.facebook.com/mark.dejong83
+  twitter: https://www.twitter.com/mdejong83
 generator: jekyll 1.4.3
 
 source: app

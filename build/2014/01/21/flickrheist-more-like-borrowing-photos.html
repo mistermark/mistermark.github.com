@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flickrheist: More Like Borrowing Photos | Mark de Jong</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="shortcut icon" href="/img/assets/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/img/assets/favicon.ico" type="image/x-icon">
+
+    <meta property="og:site_name" content="Mark de Jong"/>
+<meta property="og:title" content="Flickrheist: More Like Borrowing Photos - Mark de Jong"/>
+<meta property="og:url" content="http://www.markdejong.com/2014/01/21/flickrheist-more-like-borrowing-photos.html"/>
+<meta property="og:description" content="Everybody wants to have some pretty pictures on their website, especially big ones and pretty ones. But not everyone can make beautiful pictures or wants to buy some off of a stock images platform...
+"/>
+<meta property="og:image" content="/img/963783_10151409603996606_654139616_200x200.png"/>
+<meta property="og:type" content="article"/>
+
+    <!-- Custom CSS -->
+<!-- build:css({app,.tmp}) /css/main.css -->
+<link href="/css/base.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<!-- endbuild -->
+
+    <script type="text/javascript" src="//use.typekit.net/aic7eaw.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+<!-- build:js(app) /js/vendor/jquery.min.js -->
+<script src="/_bower_components/jquery/jquery.js"></script>
+<!-- endbuild -->
+<!-- build:js(app) /js/vendor/handlebars.min.js -->
+<script src="/_bower_components/handlebars/handlebars.js"></script>
+<!-- endbuild -->
+
+  </head>
+  <body class="post">
+    <main class="content" role="main">
+
+      <section class="masthead">
+        <figure class="avatar">
+          <a href="http://www.markdejong.com" class="img" style="background-image:url(http://www.markdejong.com/img/assets/963783_10151409603996606_654139616_200x200.png);">Mark de Jong</a>
+        </figure>
+      </section>
+
+      <article>
+        <header>
+          <h1>Flickrheist: More Like Borrowing Photos</h1>
+          <p class="creation-date">
+            <time datetime="2014-01-21 15:22:39 +0100">Tuesday, 21. January 2014</time>
+          </p>
+        </header>
+        <div class="post-content">
+          <p>Everybody wants to have some pretty pictures on their website, especially big ones and pretty ones. But not everyone can make beautiful pictures or wants to buy some off of a stock images platform...</p>
+
+<h3>Introducing “FlickrHeist”</h3>
+
+<p>Using the awesome photo-taking society at Flickr everybody can have beautiful photos on their website now with FlickrHeist. Just throw in the easy snippet to kick-off and provide your Fickr API key and a tag to filter on and you&#39;re ready to go.</p>
+
+<p>On this very website you can see a live demo of the plugin using the filter tag ‘dapper’ and grabbing photos of a resolution using the tag ‘url_c’ (800px on the longest side).</p>
+
+<h3>The Story</h3>
+
+<p>While making a theme for the <a href="https://ghost.org">Ghost</a> blogging platform I got inspired by the look and feel of <a href="https://medium.com">Medium</a>&#39;s sidebar look and decided to bring this same feeling to my theme. At first I wanted to use Instagram to grab pictures of, filtered by tag, but quickly found the size of the largest size images on Instagram didn&#39;t quite cut it. The images were too small. Hence brought me to explore the Flickr API and build my plugin on that.</p>
+
+<h3>The Bare Necessities</h3>
+
+<p>For the basic plugin to work there were a few quirks that needed figuring out, and required, for a real v1.0 release. Flickr states in their <a href="http://www.flickr.com/guidelines.gne">Community Guidelines</a> the following:</p>
+
+<blockquote>
+<p>“Flickr makes it possible to post content hosted on Flickr to other web sites. However, pages on other web sites that display content hosted on flickr.com must provide a link from each photo or video back to its page on Flickr. This provides a way to get more information about the content and the photographer.”</p>
+</blockquote>
+
+<p>And to adhere to this was the first requirement for a v1.0 release of this here plugin. The other ones I basically stated myself:</p>
+
+<p>And these were the requirements I put myself to before releasing the plugin to the wild:</p>
+
+<ol>
+<li>Pull a picture from Flickr and display it as background image on the selected DOM element.</li>
+<li>Grab the meta information from the image and display the photographer&#39;s name and country alongside the image for credits.</li>
+<li>Give the user the option to fill in a custom tag and select the image quality to use.</li>
+</ol>
+
+<p>Along the road of enlightening and towards the completion of the FlickrHeist I came across more useful options that I would want to change if I would be using the plugin for myself. That&#39;s when I added some more options to the plugin (listed below).</p>
+
+<h3>The Simple Setup</h3>
+
+<p>For everyone to use this plugin it&#39;s fairly easy to set up. All you need is the following files to get started:</p>
+
+<ul>
+<li>jQuery</li>
+<li>HandleBars.JS</li>
+<li>flickrheist.js</li>
+</ul>
+
+<p>Right now Handlebars.JS is used at a minimum, but I&#39;ve got plans on exploiting this baby even further to optimize even more.</p>
+
+<p>To initialize the plugin you&#39;ll only need to call the following in your main Javescript file:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$(&#39;#some-div&#39;).flickrHeist({
+  apikey: &#39;ABCDEFGHIJKLMOPQRSTUVWXYZ123456&#39;,
+  tags: &#39;zeitgeist&#39;,
+  size: &#39;url_c&#39; //800px longest side
+});
+</code></pre></div>
+<p>Oh, yeah... I almost forgot. You also need to have your own Flickr API key in order for this plugin to work. You can grab your own Flickr API key right <a href="http://www.flickr.com/services/api/">here</a>.</p>
+
+<h3>The Nitty Gritty</h3>
+
+<p>Below is the full list of options available and what values they take along with a brief explanation what it is and what it does.</p>
+
+<ul>
+<li><code>apikey</code>: (required) Your Flickr API key goes right here. Without it, this whole party won&#39;t start</li>
+<li><code>tags</code>: (string) A single tag, or a comma separated array of tags to filter the pictures you want to &#39;heist&#39;</li>
+<li><code>safe_search</code>: (boolean) Allow (NSFW) images to appear in your &#39;heist&#39;, or not.</li>
+<li><code>number_photos</code>: (integer) The maximum number of images to grab. Useful when you want random images to rotate between</li>
+<li><code>sortby</code>: (string) The order in which to sort returned photos. Accepts: <code>date-posted-asc</code>, <code>date-posted-desc</code>, <code>date-taken-asc</code>, <code>date-taken-desc</code>, <code>interestingness-desc</code>, <code>interestingness-asc</code>, and <code>relevance</code>.</li>
+<li><code>random</code>: (boolean) To pick a random picture from the returned array of images to show.</li>
+<li><code>size</code>: (string) Select what size image to return for use as the background. Available options:
+
+<ul>
+<li><code>url_s</code>: small square 75x75</li>
+<li><code>url_q</code>: large square 150x150</li>
+<li><code>url_t</code>: thumbnail, 100 on longest side</li>
+<li><code>url_m</code>: small, 240 on longest side</li>
+<li><code>url_n</code>: small, 320 on longest side</li>
+<li><code>url</code>: medium, 500 on longest side</li>
+<li><code>url_z</code>: medium 640, 640 on longest side</li>
+<li><code>url_c</code>: medium 800, 800 on longest side (only exist if picture is uploaded after March 1st 2012)</li>
+<li><code>url_b</code>: large, 1024 on longest side</li>
+<li><code>url_o</code>: original image, either a jpg, gif or png, depending on source format </li>
+</ul></li>
+<li><code>min_date</code>: (epoch date) Filter by minimum date to make sure you get a good quality picture &#39;heisted&#39;. Example: <code>&#39;1330560000&#39;</code> (Thu, 01 Mar 2012 00:00:00 GMT)</li>
+<li><code>debug</code>: (boolean) Handy for live loading of data, instead of reading from localStorage. Also can be triggered using the URL parameter <code>flickrheist=debug</code></li>
+<li><code>phototemplate</code>: (string) HTML template used to render the HTML for the image. Default: <code>&#39;&lt;div class=&quot;cover-image&quot; style=&quot;background-image: url()&quot;&gt;&#39;</code>.</li>
+<li><code>creditstemplate</code>: (string) Same as the <code>phototemplate</code>, just for the credits of the picture. Default: <code>&#39;&lt;div class=&quot;cover-details&quot;&gt;&lt;ul class=&quot;clearfix&quot;&gt;&lt;li class=&quot;cover-owner&quot;&gt;&lt;a href=&quot;&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;cover-location&quot;&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&#39;</code></li>
+<li><code>complete</code>: (function) A little something to do whatever you want when the loading is done.</li>
+</ul>
+
+<p>(Photo Source URLs: <a href="http://www.flickr.com/services/api/misc.urls.html">Flickr App Garden</a>)</p>
+
+<h3>The Examples</h3>
+
+<p><em>(coming soon)</em></p>
+
+        </div>
+      </article>
+
+      <hr class="soft-divide"/>
+
+      <section class="sharing">
+        <ul>
+          <li><a href="http://twitter.com/share?text=&url=" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235'); return false;">
+              <i class="share fi-social-twitter"></i><span>Twitter</span>
+          </a></li>
+          <li><a href="https://www.facebook.com/sharer/sharer.php?u=" onclick="window.open(this.href, 'facebook-share','width=580,height=296'); return false;">
+              <i class="share fi-social-facebook"></i><span>Facebook</span>
+          </a></li>
+          <li><a href="https://plus.google.com/share?url=" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530'); return false;">
+             <i class="share fi-social-google-plus"></i><span>Google+</span>
+          </a></li>
+        </ul>
+      </section>
+<!--
+      <section class="author">
+        <figure class="avatar">
+          <img alt="Basecamp" height="100" src="http://www.markdejong.com/img/assets/963783_10151409603996606_654139616_200x200.png" width="100">
+        </figure>
+        <div>
+          <h4>Mark de Jong</h4>
+          <p class="author-title">Front-end Dev and Founder of Dapper &amp; some</p>
+          <p class="author-bio">Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas faucibus mollis interdum.</p>
+        </div>
+      </section>
+-->
+
+    <hr/>
+
+    <footer class="footer">
+  <section class="copyright">
+    <p>&copy; 2013 All content copyright <a href="http://www.markdejong.com">Mark de Jong</a> &bull; All rights reserved.</p>
+    <p>This site's been built with <a class="icon-jekyll" href="http://jekyllrb.com/">Jekyll</a>, using <a href="http://www.atom.io/" title="Atom">Atom</a> for code poetry and hosted on <a href="http://github.com/" title="Github">Github</a>.</p>
+  </section>
+</footer>
+
+
+    </main>
+
+    
+  </body>
+</html>

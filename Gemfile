@@ -1,6 +1,11 @@
 source "http://rubygems.org"
-
-gem 'redcarpet'
-gem 'compass', '>=0.12'
+#
+gem 'jekyll'
+gem 'sass'
+# gem 'compass'
+# gem 'compass-core', '~> 1.0.0.alpha.19'
+# gem 'compass-susy-plugin', '~> 0.9'
 gem 'github-pages'
-gem 'jekyll', '~>1.4.0'
+# gem 'susy'
+# gem 'meyer-reset', '~> 2.0.1'
+gem 'neat'

@@ -1,0 +1,49 @@
+/* LAYOUT STYLES */
+
+html, body {
+  height: 100%;
+}
+
+.container {
+  @include outer-container;
+  @include row;
+}
+
+
+/**
+ * FRONTPAGE LAYOUT
+**/
+
+.index > div {
+  @extend .container;
+  aside.cover {
+    @include span-columns($sidebar-width);
+  }
+  main.content {
+    @include span-columns($content-width);
+  }
+  .post-content {
+    @include shift(1);
+    @include span-columns($article-width);
+  }
+}
+
+/**
+ * ARTICLE LAYOUT
+**/
+
+.post > main.content {
+  $max-width: $max-width-article;
+  @include outer-container;
+  @extend .container;
+  padding: 2em 0px;
+  article {
+    // @include span-columns($article-width);
+    padding: 0.75em 0 0;
+  }
+}
+
+
+h1,h2,h3,h4,h5,h6 {
+  margin-bottom: 0.6em;
+}
