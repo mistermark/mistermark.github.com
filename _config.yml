@@ -1,0 +1,36 @@
+# Site settings
+title: Mark de Jong
+email: mark@markdejong.com
+description: "Description of the website"
+baseurl: ""
+url: "http://markdejong.com"
+paginate: 7
+
+author:
+  name: Mark de Jong
+  title: Developer, Husband, Dutch-man and traveller
+  email: mark@markdejong.com
+  bio: Developer by day. Traveller by night. Love to analyse problems and improve on their matter. Not always seeing the sun shine.
+
+social:
+  facebook: https://www.facebook.com/mark.dejong83
+  twitter: https://www.twitter.com/mdejong83
+  github: https://github.com/mistermark
+  tumblr: http://ikheetmark.tumblr.com/
+  flickr: https://www.flickr.com/people/markdejong/
+
+sass:
+  sass_dir: _sass
+
+assets:
+  cache: false
+  sources:
+    - _assets/images
+    - _assets/javascripts
+    - _assets/stylesheets
+
+gem: ['jekyll-assets']
+
+# Build settings
+markdown: kramdown
+permalink: pretty

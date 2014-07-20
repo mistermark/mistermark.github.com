@@ -1,0 +1,5 @@
+@mixin box-shadow($vdist: 3px, $hdist: 3px, $blur: 5px, $fill: 0px, $color: #333) {
+  -webkit-box-shadow: $vdist $hdist $blur $fill $color;
+  -moz-box-shadow: $vdist $hdist $blur $fill $color;
+  box-shadow: $vdist $hdist $blur $fill $color;
+}
