@@ -2,7 +2,7 @@
 // ----------------------------------------------------------------------------
 // a Bourbon to start the day..
 // ----------------------------------------------------------------------------
-@import "bourbon";
+@import "vendor/bourbon";
 
 // ----------------------------------------------------------------------------
 // Personalized variables
@@ -17,7 +17,7 @@
 // ----------------------------------------------------------------------------
 
 @import "vendor/base/grid-settings";
-@import "neat";
+@import "vendor/neat";
 @import "vendor/base/base";
 // @import "vendor/foundation-icon-fonts/_foundation-icons";
 

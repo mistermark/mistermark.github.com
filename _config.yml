@@ -19,17 +19,27 @@ social:
   tumblr: http://ikheetmark.tumblr.com/
   flickr: https://www.flickr.com/people/markdejong/
 
+navigation:
+  - title: About
+    url: /about.html
+    permalink: /about/
+  - title: Home
+    url: /index.html
+    permalink: /
+  - title: Links
+    url: /links.html
+    permalink: /links/
+
+# assets:
+#   cache: false
+#   sources:
+#     - _assets/images
+#     - _assets/javascripts
+#     - _assets/stylesheets
+
 sass:
   sass_dir: _sass
-
-assets:
-  cache: false
-  sources:
-    - _assets/images
-    - _assets/javascripts
-    - _assets/stylesheets
-
-gem: ['jekyll-assets']
+  # style: compressed
 
 # Build settings
 markdown: kramdown
