@@ -31,11 +31,11 @@ header.masthead {
     background-size: $img-width $img-width;
     @include hide-text;
   }
-  .post & {
+  .post &.home {
     width: ($img-width / 2) + ($padding * 2) + ($border-width * 2);
     height: ($img-width / 2) + ($padding * 2) + ($border-width * 2);
   }
-  .post & .img {
+  .post &.home .img {
     width: ($img-width / 2);
     max-width: ($img-width / 2);
     height: ($img-width / 2);

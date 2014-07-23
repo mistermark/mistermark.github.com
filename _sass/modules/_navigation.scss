@@ -42,7 +42,7 @@
     &:hover, &:focus {
       color: black;
     }
-    .post & {
+    .post &.home {
       line-height: $base-font-size * 1.8;
     }
   }
