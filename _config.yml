@@ -1,16 +1,16 @@
 # Site settings
 title: Mark de Jong
 email: mark@markdejong.com
-description: "Description of the website"
+description: "The Thoughts and Rants of a Typography Fanatic and Web Developer"
 baseurl: ""
 url: "http://markdejong.com"
-paginate: 7
+paginate: 8
 
 author:
   name: Mark de Jong
   title: Developer, Husband, Dutch-man and traveller
   email: mark@markdejong.com
-  bio: Developer by day. Traveller by night. Love to analyse problems and improve on their matter. Not always seeing the sun shine.
+  bio: Developer by day. Dreamer by night. Typography fanatic. Founder of <a href="http://dappersome.com">Dapper & some</a> web design
 
 social:
   facebook: https://www.facebook.com/mark.dejong83
@@ -30,16 +30,14 @@ navigation:
     url: /links.html
     permalink: /links/
 
-# assets:
-#   cache: false
-#   sources:
-#     - _assets/images
-#     - _assets/javascripts
-#     - _assets/stylesheets
+collections:
+  links:
+    category: links
+
 
 sass:
   sass_dir: _sass
-  # style: compressed
+  style: compressed
 
 # Build settings
 markdown: kramdown

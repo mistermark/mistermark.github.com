@@ -1,14 +1,39 @@
----
-layout: default
----
-<div class="post">
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ page.title }} | {{ site.title }}</title>
+    {% include meta-tags.html %}
+    {% include socialtags.html %}
+    {% include stylesheets.html %}
+    {% include header-scripts.html %}
+  </head>
+  <body class="page">
 
-  <header class="post-header">
-    <h1>{{ page.title }}</h1>
-  </header>
+    {% include page-header.html type="page" %}
 
-  <article class="post-content">
-  {{ content }}
-  </article>
+    <main class="content" role="main">
 
-</div>
+      <article>
+        <header>
+          <h2>{{ page.title }}</h2>
+        </header>
+        <div class="post-content">
+          {{ content }}
+        </div>
+      </article>
+
+      <hr class="divider--medium"/>
+
+      {% include post-sharing.html %}
+
+      <hr class="divider--large"/>
+
+      {%comment%}{% include disqus.html %}{%endcomment%}
+
+    </main>
+
+    {% include footer.html %}
+    {% include footer-scripts.html %}
+
+  </body>
+</html>

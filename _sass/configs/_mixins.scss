@@ -3,3 +3,29 @@
   -moz-box-shadow: $vdist $hdist $blur $fill $color;
   box-shadow: $vdist $hdist $blur $fill $color;
 }
+
+@mixin avatar($border-width: 1px, $padding: 8px, $img-width: 160px) {
+  margin: 0 auto;
+  width: $img-width + ($padding * 2) + ($border-width * 2);
+  max-width: $img-width + ($padding * 2) + ($border-width * 2);
+  height: $img-width + ($padding * 2) + ($border-width * 2);
+  max-height: $img-width + ($padding * 2) + ($border-width * 2);
+  padding: $padding;
+  border: $border-width solid darken($greyed-out, 10%);
+  &,
+  & > .img {
+    border-radius: 50%;
+    margin-bottom: 0;
+    display: block;
+  }
+  .img {
+    width: $img-width;
+    max-width: $img-width;
+    height: $img-width;
+    max-height: $img-width;
+    background: transparent none no-repeat center;
+    -webkit-background-size: $img-width $img-width;
+    background-size: $img-width $img-width;
+    @include hide-text;
+  }
+}

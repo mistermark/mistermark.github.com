@@ -29,7 +29,7 @@
       padding-right: em(18);
     }
   }
-  a {
+  a:not(.img) {
     border-bottom: 1px solid $greyed-out;
     padding: 0 em(48);
     font-size: $base-font-size * 0.5;

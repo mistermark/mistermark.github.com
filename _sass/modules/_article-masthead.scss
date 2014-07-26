@@ -8,39 +8,11 @@ header.masthead {
 }
 
 .avatar {
-  $border-width: 1px;
-  $padding: 6px;
-  $img-width: 160px;
-  margin: 0 auto;
-  width: $img-width + ($padding * 2) + ($border-width * 2);
-  height: $img-width + ($padding * 2) + ($border-width * 2);
-  padding: $padding;
-  border: $border-width solid rgba(0, 0, 0, 0.6);
-  &,>.img {
-    border-radius: 50%;
-    margin-bottom: 0;
-    display: block;
-  }
-  .img {
-    width: $img-width;
-    max-width: $img-width;
-    height: $img-width;
-    max-height: $img-width;
-    background: transparent none no-repeat center;
-    -webkit-background-size: $img-width $img-width;
-    background-size: $img-width $img-width;
-    @include hide-text;
-  }
-  .post &.home {
-    width: ($img-width / 2) + ($padding * 2) + ($border-width * 2);
-    height: ($img-width / 2) + ($padding * 2) + ($border-width * 2);
-  }
-  .post &.home .img {
-    width: ($img-width / 2);
-    max-width: ($img-width / 2);
-    height: ($img-width / 2);
-    max-height: ($img-width / 2);
-    -webkit-background-size: ($img-width / 2) ($img-width / 2);
-    background-size: ($img-width / 2) ($img-width / 2);
-  }
+  @include avatar(1px, 8px, 160px);
+}
+
+.post .avatar.home,
+.page .avatar.home {
+  @include avatar(1px, 5px, 80px);
+  margin: 0;
 }
