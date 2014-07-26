@@ -1,0 +1,44 @@
+.resources-links {
+  list-style: none;
+  padding: 2em 0 0;
+  margin: 0 0 2em;
+  @include clearfix;
+  li {
+    display: inline-block;
+    width: 50%;
+    border-right: 1px solid $greyed-out;
+    border-top: 1px solid $greyed-out;
+    float: left;
+    &:nth-child(2n) {
+      border-right: none;
+      a {
+        padding: 1em 0.8em 1em 1em;
+      }
+    }
+    &:first-child,
+    &:nth-child(2) {
+      border-top: none;
+    }
+    a {
+      padding: 1em 1em 1em 0.8em;
+    }
+  }
+  a {
+    display: inline-block;
+    &:hover {
+      background-color: rgba(100,100,100,0.05);
+    }
+  }
+  h5 {
+    padding-top: 0;
+    margin-bottom: $base-font-size * 0.3;
+    font-size: $base-font-size * 0.9;
+    line-height: 1.1em;
+  }
+  span {
+    display: inline-block;
+    font-size: $base-font-size * 0.5;
+    color: $greyed-out;
+    line-height: $base-font-size * 1.2;
+  }
+}

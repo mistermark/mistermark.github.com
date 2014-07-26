@@ -1,0 +1,26 @@
+<header class="masthead">
+  <nav class="navigation">
+    <ul>
+    {% assign links = site.navigation %}
+    {% for link in links %}
+      {% assign current = nil %}
+      {% assign linkName = link.title | replace: ' ','-' | downcase %}
+      {% if page.url == link.permalink %}
+        {% assign current = ' current' %}
+      {% endif %}
+      {% if linkName == 'home' %}
+      <li class="{{ linkName }} avatar">
+        <a href="{{ link.permalink | prepend: site.baseurl }}" class="img page-link{% if forloop.first %} first{% endif %}{{ current }}" style="background-image: url({{ '/images/assets/963783_10151409603996606_654139616_200x200.png' | prepend: site.baseurl }})"><span>{{ link.title }}</span></a>
+      </li>
+      {% else %}
+      <li class="{{ linkName }}">
+        <a class="page-link{% if forloop.first %} first{% endif %}{{ current }}" href="{{ link.permalink | prepend: site.baseurl }}"><span>{{ link.title }}</span></a>
+      </li>
+      {% endif %}
+    {% endfor %}
+    </ul>
+  </nav>
+  <!-- <figure class="avatar">
+    <a href="{{ site.url }}" class="img" >{{ site.author.name }}</a>
+  </figure> -->
+</header>

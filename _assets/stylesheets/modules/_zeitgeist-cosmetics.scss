@@ -1,0 +1,33 @@
+/** typecast URL: http://typecast.com/qptZqdXjKt/share/277e9f45f0d3b088024551e1ede63340f6d9e41aPj8XP62VjX **/
+
+/**
+ * - General styling
+ * - Article specific
+ * - Author Section
+**/
+
+/**
+ * GENERAL STYLING
+**/
+
+html, body {
+  // line-height: 1.6em;
+  background-color: #fff;
+
+  -moz-font-feature-settings:"liga=1, dlig=1";
+  -moz-font-feature-settings:"liga", "dlig"; /* EDIT: new syntax for FF 15+ */
+  -ms-font-feature-settings:"liga", "dlig";
+  -o-font-feature-settings:"liga", "dlig";
+  -webkit-font-feature-settings:"liga", "dlig";
+  font-feature-settings:"liga", "dlig";
+}
+// section {
+//   position: relative;
+// }
+//
+// img {
+//   width: auto;
+//   height: auto;
+//   max-width: 100%;
+//   margin: 0 0 1.3em 0;
+// }

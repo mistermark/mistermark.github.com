@@ -1,0 +1,50 @@
+/*
+ * BOURBON/NEAT SETTINGS
+**/
+
+$em-base: 22px;
+$max-width: 760px;
+$grid-columns: 24;
+$base-font-size: 1.45em;
+$base-line-height: $base-font-size * 1.4;
+
+/**
+ * BREAKPOINTS
+**/
+
+
+/**
+ * THEME SETTINGS
+**/
+// $fi-path: "/fonts/foundation-icons";
+
+$sidebar-width: 4;
+$content-width: 8;
+$article-width: 6;
+
+/** COLORS **/
+$base-accent-color: rgb(0,152,116);
+$primary-color: $base-accent-color;
+$bordercolor: #dededc;
+$greyed-out: lighten(#000, 50%);
+
+/** TYPOGRAPHY **/
+@include font-face("Trend Ornaments", "../fonts/trend-ornaments/trend-ornaments-webfont");
+@include font-face("Metrize Icons", "../fonts/metrize-icons/Metrize-Icons");
+@include font-face("Icomoon Set", "../fonts/icomoon-set/icomoon");
+
+$sans-serif: "calluna-sans-1", "calluna-sans-2", "Helvetica Nueue", "Helvetica", Arial, sans-serif;
+$serif: "calluna-1", "calluna-2", "Georgia", "Times New Roman", Georgia, sans-serif;
+
+$base-font-family: $serif;
+$header-font-family: $sans-serif;
+$header-font-weight: 600;
+$header-color: $primary-color;
+$text-color: lighten(#000, 7%);
+
+
+$base-link-color: #009973;
+$link-hover-color: lighten($base-link-color, 5%);
+$link-active-color: $link-hover-color;
+$link-visited-color: darken($base-link-color, 5%);
+$link-focus-color: $link-hover-color;

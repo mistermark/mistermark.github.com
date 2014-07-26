@@ -1,0 +1,25 @@
+/*
+Errno::ENOENT: No such file or directory @ rb_sysopen - csswizardry.scss
+
+Backtrace:
+/Users/mark/.rvm/gems/ruby-2.1.0/gems/sass-3.3.11/lib/sass/plugin/compiler.rb:369:in `read'
+/Users/mark/.rvm/gems/ruby-2.1.0/gems/sass-3.3.11/lib/sass/plugin/compiler.rb:369:in `update_stylesheet'
+/Users/mark/.rvm/gems/ruby-2.1.0/gems/sass-3.3.11/lib/sass/plugin/compiler.rb:189:in `block in update_stylesheets'
+/Users/mark/.rvm/gems/ruby-2.1.0/gems/sass-3.3.11/lib/sass/plugin/compiler.rb:186:in `each'
+/Users/mark/.rvm/gems/ruby-2.1.0/gems/sass-3.3.11/lib/sass/plugin/compiler.rb:186:in `update_stylesheets'
+/Users/mark/.rvm/gems/ruby-2.1.0/gems/sass-3.3.11/lib/sass/plugin/compiler.rb:221:in `watch'
+/Users/mark/.rvm/gems/ruby-2.1.0/gems/sass-3.3.11/lib/sass/plugin.rb:108:in `method_missing'
+/Users/mark/.rvm/gems/ruby-2.1.0/gems/sass-3.3.11/lib/sass/exec.rb:509:in `watch_or_update'
+/Users/mark/.rvm/gems/ruby-2.1.0/gems/sass-3.3.11/lib/sass/exec.rb:346:in `process_result'
+/Users/mark/.rvm/gems/ruby-2.1.0/gems/sass-3.3.11/lib/sass/exec.rb:43:in `parse'
+/Users/mark/.rvm/gems/ruby-2.1.0/gems/sass-3.3.11/lib/sass/exec.rb:22:in `parse!'
+/Users/mark/.rvm/gems/ruby-2.1.0/gems/sass-3.3.11/bin/sass:13:in `<top (required)>'
+/Users/mark/.rvm/gems/ruby-2.1.0/bin/sass:23:in `load'
+/Users/mark/.rvm/gems/ruby-2.1.0/bin/sass:23:in `<main>'
+/Users/mark/.rvm/gems/ruby-2.1.0/bin/ruby_executable_hooks:15:in `eval'
+/Users/mark/.rvm/gems/ruby-2.1.0/bin/ruby_executable_hooks:15:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Errno::ENOENT: No such file or directory @ rb_sysopen - csswizardry.scss"; }
