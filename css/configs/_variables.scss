@@ -33,12 +33,12 @@ $greyed-out: lighten(#000, 50%);
 @include font-face("Metrize Icons", "../fonts/metrize-icons/Metrize-Icons");
 @include font-face("Icomoon Set", "../fonts/icomoon-set/icomoon");
 
-$sans-serif: "calluna-sans-1", "calluna-sans-2", "Helvetica Nueue", "Helvetica", Arial, sans-serif;
-$serif: "calluna-1", "calluna-2", "Georgia", "Times New Roman", Georgia, sans-serif;
+$sans-serif: "calluna-sans", "Helvetica Nueue", "Helvetica", Arial, sans-serif;
+$serif: "calluna", "Georgia", "Times New Roman", Georgia, sans-serif;
 
 $base-font-family: $serif;
 $header-font-family: $serif;
-$header-font-weight: 600;
+$header-font-weight: 700;
 $header-color: $primary-color;
 $text-color: lighten(#000, 7%);
 
