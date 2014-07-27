@@ -1,0 +1,51 @@
+hr {
+  border: none;
+  height: 1px;
+  margin: 3em 0;
+  background-color: $greyed-out;
+  position: relative;
+  &.divider {
+    background-color: transparent;
+    &:before {
+      background-repeat: no-repeat;
+      background-position: center;
+      content: "";
+      background-size: contain;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  &.divider--medium {
+    @extend .divider;
+    &:before {
+      background-image: url("/images/divider-medium.svg");
+      width: 170px;
+      height: 9px;
+    }
+  }
+  &.divider--simple {
+    @extend .divider;
+    &:before {
+    }
+  }
+  &.divider--large {
+    @extend .divider;
+    &:before {
+      background-image: url("/images/divider-large.svg");
+      width: 216px;
+      height: 10px;
+    }
+  }
+  &.page-divide {
+    background-color: transparent;
+    text-align: center;
+    margin: 4em 0;
+    &:before {
+      content: "f";
+      font-family: "Trend Ornaments";
+      font-size: 1.6em;
+      position: relative;
+      top: -0.55em;
+    }
+  }
+}
