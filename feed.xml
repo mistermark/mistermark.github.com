@@ -1,21 +1,243 @@
----
-layout: none
----
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>{{ site.title | xml_escape }}</title>
-    <description>{{ site.description | xml_escape }}</description>
-    <link>{{ site.url }}{{ site.baseurl }}/</link>
-    <atom:link href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" rel="self" type="application/rss+xml" />
-    {% for post in site.posts limit:10 %}
+    <title>Mark de Jong</title>
+    <description>The Thoughts and Rants of a Typography Fanatic and Web Developer</description>
+    <link>http://markdejong.com/</link>
+    <atom:link href="http://markdejong.com/feed.xml" rel="self" type="application/rss+xml" />
+    
       <item>
-        <title>{{ post.title | xml_escape }}</title>
-        <description>{{ post.content | xml_escape }}</description>
-        <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
-        <link>{{ post.url | prepend: site.baseurl | prepend: site.url }}</link>
-        <guid isPermaLink="true">{{ post.url | prepend: site.baseurl | prepend: site.url }}</guid>
+        <title>Flickrheist: More Like Borrowing Photos</title>
+        <description>&lt;p&gt;Everybody wants to have some pretty pictures on their website, especially big ones and pretty ones. But not everyone can make beautiful pictures or wants to buy some off of a stock images platform…&lt;/p&gt;
+
+&lt;h3 id=&quot;introducing-flickrheist&quot;&gt;Introducing “FlickrHeist”&lt;/h3&gt;
+
+&lt;p&gt;Using the awesome photo-taking society at Flickr everybody can have beautiful photos on their website now with FlickrHeist. Just throw in the easy snippet to kick-off and provide your Fickr API key and a tag to filter on and you’re ready to go.&lt;/p&gt;
+
+&lt;p&gt;On this very website you can see a live demo of the plugin using the filter tag ‘dapper’ and grabbing photos of a resolution using the tag ‘url_c’ (800px on the longest side).&lt;/p&gt;
+
+&lt;h3 id=&quot;the-story&quot;&gt;The Story&lt;/h3&gt;
+
+&lt;p&gt;While making a theme for the &lt;a href=&quot;https://ghost.org&quot;&gt;Ghost&lt;/a&gt; blogging platform I got inspired by the look and feel of &lt;a href=&quot;https://medium.com&quot;&gt;Medium&lt;/a&gt;’s sidebar look and decided to bring this same feeling to my theme. At first I wanted to use Instagram to grab pictures of, filtered by tag, but quickly found the size of the largest size images on Instagram didn’t quite cut it. The images were too small. Hence brought me to explore the Flickr API and build my plugin on that.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-bare-necessities&quot;&gt;The Bare Necessities&lt;/h3&gt;
+
+&lt;p&gt;For the basic plugin to work there were a few quirks that needed figuring out, and required, for a real v1.0 release. Flickr states in their &lt;a href=&quot;http://www.flickr.com/guidelines.gne&quot;&gt;Community Guidelines&lt;/a&gt; the following:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“Flickr makes it possible to post content hosted on Flickr to other web sites. However, pages on other web sites that display content hosted on flickr.com must provide a link from each photo or video back to its page on Flickr. This provides a way to get more information about the content and the photographer.”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;And to adhere to this was the first requirement for a v1.0 release of this here plugin. The other ones I basically stated myself:&lt;/p&gt;
+
+&lt;p&gt;And these were the requirements I put myself to before releasing the plugin to the wild:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Pull a picture from Flickr and display it as background image on the selected DOM element.&lt;/li&gt;
+  &lt;li&gt;Grab the meta information from the image and display the photographer’s name and country alongside the image for credits.&lt;/li&gt;
+  &lt;li&gt;Give the user the option to fill in a custom tag and select the image quality to use.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Along the road of enlightening and towards the completion of the FlickrHeist I came across more useful options that I would want to change if I would be using the plugin for myself. That’s when I added some more options to the plugin (listed below).&lt;/p&gt;
+
+&lt;h3 id=&quot;the-simple-setup&quot;&gt;The Simple Setup&lt;/h3&gt;
+
+&lt;p&gt;For everyone to use this plugin it’s fairly easy to set up. All you need is the following files to get started:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;jQuery&lt;/li&gt;
+  &lt;li&gt;HandleBars.JS&lt;/li&gt;
+  &lt;li&gt;flickrheist.js&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Right now Handlebars.JS is used at a minimum, but I’ve got plans on exploiting this baby even further to optimize even more.&lt;/p&gt;
+
+&lt;p&gt;To initialize the plugin you’ll only need to call the following in your main Javescript file:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;#some-div&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;flickrHeist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt;       &lt;span class=&quot;nx&quot;&gt;apikey&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;ABCDEFGHIJKLMOPQRSTUVWXYZ123456&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt;       &lt;span class=&quot;nx&quot;&gt;tags&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;zeitgeist&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt;       &lt;span class=&quot;nx&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;url_c&amp;#39;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//800px longest side&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;5&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Oh, yeah… I almost forgot. You also need to have your own Flickr API key in order for this plugin to work. You can grab your own Flickr API key right &lt;a href=&quot;http://www.flickr.com/services/api/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-nitty-gritty&quot;&gt;The Nitty Gritty&lt;/h3&gt;
+
+&lt;p&gt;Below is the full list of options available and what values they take along with a brief explanation what it is and what it does.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;apikey&lt;/code&gt;: (required) Your Flickr API key goes right here. Without it, this whole party won’t start&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;tags&lt;/code&gt;: (string) A single tag, or a comma separated array of tags to filter the pictures you want to ‘heist’&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;safe_search&lt;/code&gt;: (boolean) Allow (NSFW) images to appear in your ‘heist’, or not.&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;number_photos&lt;/code&gt;: (integer) The maximum number of images to grab. Useful when you want random images to rotate between&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;sortby&lt;/code&gt;: (string) The order in which to sort returned photos. Accepts: &lt;code&gt;date-posted-asc&lt;/code&gt;, &lt;code&gt;date-posted-desc&lt;/code&gt;, &lt;code&gt;date-taken-asc&lt;/code&gt;, &lt;code&gt;date-taken-desc&lt;/code&gt;, &lt;code&gt;interestingness-desc&lt;/code&gt;, &lt;code&gt;interestingness-asc&lt;/code&gt;, and &lt;code&gt;relevance&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;random&lt;/code&gt;: (boolean) To pick a random picture from the returned array of images to show.&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;size&lt;/code&gt;: (string) Select what size image to return for use as the background. Available options:&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;url_s&lt;/code&gt;: small square 75x75&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;url_q&lt;/code&gt;: large square 150x150&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;url_t&lt;/code&gt;: thumbnail, 100 on longest side&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;url_m&lt;/code&gt;: small, 240 on longest side&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;url_n&lt;/code&gt;: small, 320 on longest side&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;url&lt;/code&gt;: medium, 500 on longest side&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;url_z&lt;/code&gt;: medium 640, 640 on longest side&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;url_c&lt;/code&gt;: medium 800, 800 on longest side (only exist if picture is uploaded after March 1st 2012)&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;url_b&lt;/code&gt;: large, 1024 on longest side&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;url_o&lt;/code&gt;: original image, either a jpg, gif or png, depending on source format&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;min_date&lt;/code&gt;: (epoch date) Filter by minimum date to make sure you get a good quality picture ‘heisted’. Example: &lt;code&gt;&#39;1330560000&#39;&lt;/code&gt; (Thu, 01 Mar 2012 00:00:00 GMT)&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;debug&lt;/code&gt;: (boolean) Handy for live loading of data, instead of reading from localStorage. Also can be triggered using the URL parameter &lt;code&gt;flickrheist=debug&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;phototemplate&lt;/code&gt;: (string) HTML template used to render the HTML for the image. Default: &lt;code&gt;&#39;&amp;lt;div class=&quot;cover-image&quot; style=&quot;background-image: url()&quot;&amp;gt;&#39;&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;creditstemplate&lt;/code&gt;: (string) Same as the &lt;code&gt;phototemplate&lt;/code&gt;, just for the credits of the picture. Default: &lt;code&gt;&#39;&amp;lt;div class=&quot;cover-details&quot;&amp;gt;&amp;lt;ul class=&quot;clearfix&quot;&amp;gt;&amp;lt;li class=&quot;cover-owner&quot;&amp;gt;&amp;lt;a href=&quot;&quot; title=&quot;&quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&amp;lt;li class=&quot;cover-location&quot;&amp;gt;&amp;lt;/li&amp;gt;&amp;lt;/ul&amp;gt;&amp;lt;/div&amp;gt;&#39;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;complete&lt;/code&gt;: (function) A little something to do whatever you want when the loading is done.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(Photo Source URLs: &lt;a href=&quot;http://www.flickr.com/services/api/misc.urls.html&quot;&gt;Flickr App Garden&lt;/a&gt;)&lt;/p&gt;
+
+&lt;h3 id=&quot;the-examples&quot;&gt;The Examples&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;(coming soon)&lt;/em&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 21 Jan 2014 15:22:39 +0100</pubDate>
+        <link>http://markdejong.com/2014/01/21/flickrheist-more-like-borrowing-photos/</link>
+        <guid isPermaLink="true">http://markdejong.com/2014/01/21/flickrheist-more-like-borrowing-photos/</guid>
       </item>
-    {% endfor %}
+    
+      <item>
+        <title>Curiosity doesn&#39;t kill cats</title>
+        <description>&lt;p&gt;Every day we are doing our thing and for the most of us it’s becoming a routine that repeats itself day after day after day. We get so familiar with what we do that we start to take it all for granted. Up to the point that we don’t even notice it at all anymore. From that point on it’s all just auto-pilot driving us. It all just whooshes past and it’s just another insignificant decoration to our day.&lt;/p&gt;
+
+&lt;p&gt;Up to here everything goes perfectly fine until a minor hiccup just messes us up completely. The municipal roadworks starts tearing up the road you’re always taking to work. Which makes you take a detour and it’ll take you an additional 5 minutes to get to your office. * hiccup *&lt;/p&gt;
+
+&lt;p&gt;Or you just left home one minute later than usual and the traffic light you usually cross, green when you would pass in time, is now red and you have to wait another 3 minutes before you can continue your usual commute to the office. * hiccup *&lt;/p&gt;
+
+&lt;p&gt;When something like this happens it wakes us up from our usual habits. It makes us pay more attention to our surroundings and only then we can see that cute, little pigeon eating a rained down piece of chicken that’s left from the market from the day before. Normally we would’ve never noticed it because we would’ve been too caught up in our routine. But now, because something happened that’s different from our routine, we did see it and we were amazed.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://markdejong.com/img/2013/11/11105350803_4fda52a0a0_o.jpg&quot; alt=&quot;alt&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;That same philosophy can be applied to studying by reading books. When we’re reading a book or article that’s printed in a font that’s familiar to us, say Arial or Times New Roman, we tend to take the contents of that book for granted. We just read over all the details without actually absorbing the information it contains, thus still learning nothing. By changing the font the book uses to something different, but slightly similar, it actually triggers us to focus more. Since we think we know the font, but actually we don’t. So we want to focus our brain and train our attention to read it, because it looks unfamiliar, yet strangely familiar to us. As a result we’re actually able to absorb what we’ve read and learn the material easier like we’re supposed to for that final exam we’re taking soon.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Donec ullamcorper nulla non metus auctor fringilla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis mollis, est non commodo luctus.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;For example, when I’m reading a newspaper I read an article once and most of the time I can’t even remember what I’ve read without having to read it again for two or sometimes even three times. It’s just because the newspaper that I’m reading is using the same font for years. The advantage of reading a newspaper article that is printed in the same font for years is that they’re looking familiar. We can read all the articles fast enough before finishing breakfast, or on the train before having to transfer. Just enough to get the topic the article is about without having to actually absorb or remember the whole story. These fonts the newspaper uses allow us to read fast and briefly the news we want to know, fast and within the time we have at that moment.&lt;/p&gt;
+
+&lt;p&gt;Actually it’s a very interesting fact that such a small (dis)similarity in fonts can still influence our reading experience that much. Can you imagine the logo of Coca-Cola in a serif font instead of a handwritten font? What would the impact of that have been if they never went for a handwritten logo? Or what if Nike went with a serif font as well? Would they still get the same ‘speedy’ imago as they have now? I think all typography we see and use ourselves today and yesterday have a reason.&lt;/p&gt;
+
+&lt;p&gt;Just think about this next time you are reading the newspaper, watching a movie, or even writing an essay on your own computer using your own favourite text editor with your own favourite font. Every detail of all the things we do or see on a daily basis have a bigger impact on your life that you might think.&lt;/p&gt;
+
+&lt;p&gt;This article is also &lt;a href=&quot;https://medium.com/i-m-h-o/cb9122f0bf7&quot;&gt;posted&lt;/a&gt; on &lt;a href=&quot;https://medium.com/@mdejong83&quot;&gt;Medium.com&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 28 Nov 2013 20:57:42 +0100</pubDate>
+        <link>http://markdejong.com/2013/11/28/curiosity-doesnt-kill-cats/</link>
+        <guid isPermaLink="true">http://markdejong.com/2013/11/28/curiosity-doesnt-kill-cats/</guid>
+      </item>
+    
+      <item>
+        <title>Movember Movement for Mo Bros and Sistas 2013</title>
+        <description>&lt;p&gt;For the past few weeks I’ve been expecting, and attempting to convince all colleagues and friends, to join in on the Movember Movement. I’ve already had some of my colleagues join our team “&lt;a href=&quot;http://moteam.co/master-of-moustache&quot;&gt;Master of Moustache&lt;/a&gt;” and successfully follow the Movember Movement.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2013/11/MO13_primary_logo.png&quot; alt=&quot;Movember 2013&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Yesterday on Movember 1st we had our Movember shave-off party at &lt;a href=&quot;https://www.facebook.com/CutThroatBarber&quot;&gt;Cut Throat Barber&lt;/a&gt; and came out to show the real face of men’s health. Colleagues arrived at the office clean shaven and proudly showing their bare naked face, supporting the fight against diseases like prostate cancer, testicular cancer and mental health.&lt;/p&gt;
+
+&lt;h3 id=&quot;proud-first-time-mo-bro&quot;&gt;Proud first-time Mo Bro&lt;/h3&gt;
+
+&lt;p&gt;I have to say I’m proud to have finally joined the Movember Movement and to support our fellow moustache friends in their quest for a better health. Last year I was about to join as well, but in the end I didn’t. This year I convinced myself, and some friends and colleagues, to finally stand on my decision and go all in with the shave and the ‘stache!&lt;/p&gt;
+
+&lt;p&gt;Just to shamelessly show off my participation to Movember here are some proofs.&lt;/p&gt;
+
+&lt;h4 id=&quot;waiting-for-the-shave-off-party-to-start-pre-shave&quot;&gt;Waiting for the Shave-Off Party to Start (pre-shave)&lt;/h4&gt;
+&lt;p&gt;Just a week, or week and a half, before the shave-off I decided to not shave at all and let it all grow wild.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2013/11/2013_11_01_14_20_29.png&quot; alt=&quot;Status update before shave-off: Pre-shave&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;first-stage-of-the-shave-off-trimming&quot;&gt;First Stage of the Shave-Off: Trimming&lt;/h4&gt;
+&lt;p&gt;Before we start shaving we taketh off the facial hair with a buzzing trimmer.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2013/11/2013_11_01_14_58_10.png&quot; alt=&quot;Getting my beard trimmed&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;second-stage-of-the-shave-off-shaving-it-all-off&quot;&gt;Second Stage of the Shave-Off: Shaving It All Off!&lt;/h4&gt;
+&lt;p&gt;Once we have removeth the gross of the facial hair we proceed to the next: razorblade shaving.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2013/11/2013_11_01_15_04_30.png&quot; alt=&quot;Clean shaving my face&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;final-stage-of-the-shave-off-glimmering-smoothness&quot;&gt;Final Stage of the Shave-Off: Glimmering Smoothness&lt;/h4&gt;
+&lt;p&gt;As a result of preceeding steps we have, what we call, a butt naked face.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2013/11/2013_11_01_15_12_30.png&quot; alt=&quot;Resulting in a smooth-shaven chin&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;bonus-stage-proud-snapshot-with-mo-bro-and-sista&quot;&gt;Bonus stage: Proud snapshot with Mo Bro and Sista&lt;/h4&gt;
+&lt;p&gt;After you realized what just happened you can be proud with your Mo Bro and Mo Sista.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2013/11/2013_11_01_15_28_24.png&quot; alt=&quot;Pride all around with Mo Bro and Mo Sista&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;special-goody-bag-video-submission&quot;&gt;Special Goody Bag Video Submission&lt;/h3&gt;
+&lt;p&gt;Especially for those who have no idea what Movember is, or where the moustache comes from even, here’s a surprise submission video from great actor and moustache president Nick Offerman.&lt;/p&gt;
+
+&lt;iframe width=&quot;637&quot; height=&quot;358&quot; src=&quot;//www.youtube.com/embed/8w1p5UI7Siw&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2013/11/MO13_Proud_Mo_Grower.png&quot; alt=&quot;Movember 2013 Proud Mo Grower&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sat, 02 Nov 2013 14:51:51 +0100</pubDate>
+        <link>http://markdejong.com/2013/11/02/movember-movement-for-mo-bros-and-sistas-2013/</link>
+        <guid isPermaLink="true">http://markdejong.com/2013/11/02/movember-movement-for-mo-bros-and-sistas-2013/</guid>
+      </item>
+    
+      <item>
+        <title>Starting the day with an adventure</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;Nothing goes as it usually does. Everything has changed differently than before. Even the normal walking route you take to work everyday has changed because of that one thing that was different today.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Usually when I start my day I take the normal routine before I go to work: After I wake up I wash my face and brush my teeth. I get dressed and have my breakfast. Then I’ll kiss my wife goodbye and head out to the train station on my beautiful orange Swedish Kronan bike and hop on the big yellow train to Amsterdam.&lt;/p&gt;
+
+&lt;p&gt;As a creature of habit I take about the same time with everything in the morning, even when I’m riding my bike I’ll take the same route to the station every day. It doesn’t matter what kind of weather it is, I’ll always take the same route.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Maybe it’s what you needed. That one nudge to put you off the regular path that made you venture out of the familiar woods and into unexplored territory. A whole new world is there to be taken in by you and to find new treasures.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Sometimes the start of my day takes an unusual turn and forces me to improvise and abandon my favorite routine. Today was that kind of day…&lt;/p&gt;
+
+&lt;p&gt;I was waiting on the platform for the train to come and when it arrived I lined up beside the door to let the passengers off before getting on the train. At the same time a youngster lined up right beside me, closing in to the door, trying to squeeze through already. Once all passengers were out I tried to get in and the youngster squeezed on the train from beside me. His backpack got stuck between the door and me, while I was still trying to get on the train, and when we both were on the train he pushed me backwards for obstructing his way onto the train. We exchanged a few hefty words and I walked away to find myself a seat.. on the other side of the train.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;If that’s what happended then maybe that one nudge by that one frustrated fellow train passenger was the one you needed to get out of your comfort zone. Just accept it and go on exploring that unknown realm behind the nudge.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;While the train was making its way to Amsterdam, which usually takes about 20 minutes, I had time to think about what just had happened.
+After I realized the situation and accepted it as a typical ‘one-of-those-days’-thing I started wondering about how this really changed my usual routine and my winter-time jetlag (we still have Daylight Saving time here in Holland.. yeah).&lt;/p&gt;
+
+&lt;p&gt;The past few days, ever since the wintertime clock started, I haven’t been my usual motivated self. I’ve been walking around with sleepy eyes and haven’t been able to get a half hour of solid work done. This new surprising start of the day was actually a pleasant wake up call from my normal daily startup routine.&lt;/p&gt;
+
+&lt;p&gt;Once the train arrived in Amsterdam I’ve walked a completely different route from the train to the tram that I take to the office. I’ve skipped the closest stairs, yet the most busy one, off the platform and took the next one that ends up on the other side of the main hall. I took some narrow shortcuts behind the columns in the hall and checked out at a totally different gate to get out of the station.&lt;/p&gt;
+
+&lt;p&gt;Eventually I found that today was a good new start of the day for me, even though very surprising and adventurous, and it got me out of my slumbering winter-time jetlag and back to my motivated self.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 31 Oct 2013 09:03:57 +0100</pubDate>
+        <link>http://markdejong.com/2013/10/31/starting-the-day-with-an-adventure/</link>
+        <guid isPermaLink="true">http://markdejong.com/2013/10/31/starting-the-day-with-an-adventure/</guid>
+      </item>
+    
+      <item>
+        <title>&#39;Sprinter&#39; vs. &#39;Stoptrein&#39;</title>
+        <description>&lt;p&gt;Back in the day when I was still studying Art &amp;amp; Design I had to take the train from Tilburg to Boxtel every day back and forth. At that time they called this kind of train a ‘&lt;em&gt;Stoptrein&lt;/em&gt;’. Literally translated to English as ‘stop train’. Of course this doesn’t mean the train never moves, or always stops, but it would just stop at every single station it goes through. It’s counterpart would be the ‘&lt;em&gt;Intercity&lt;/em&gt;’, which would only stop at the bigger cities worthy of it stopping by. But I’m not going to talk about the ‘Intercity’, but about the difference of the train ‘&lt;em&gt;Stoptrein&lt;/em&gt;’. Now being called a ‘&lt;em&gt;Sprinter&lt;/em&gt;’.&lt;/p&gt;
+
+&lt;p&gt;Our Dutch railway system, “&lt;a href=&quot;http://nl.wikipedia.org/wiki/Nederlandse_Spoorwegen&quot;&gt;Nederlandse Spoorwegen&lt;/a&gt;” or “NS” in short, is always trying to make things better for their customers. That would be us, the passengers. For example by using more personal greetings in their automated announcements. Their announcements now have a robot-like voice saying: “Dames en heren… Goedemorgen!” (“Ladies and gentlemen… Goodmorning!”). It almost feels as if they try so hard to be cool that they miss the boat of coolness by a long shot. Similar story here with renaming of the “Stoptrein”.&lt;/p&gt;
+
+&lt;p&gt;Probably they thought it would sound better to call the “Stoptrein” a “Sprinter” too, because it would imply the train would move faster in short sprints. Someone might’ve come up with this idea because everyone was complaining about the train always being late or delayed due to the fact that it &lt;strong&gt;stops&lt;/strong&gt; everywhere. So they decided to call the train a “Sprinter” instead. Giving the customer the idea the train isn’t actually slow, or always delayed, but instead looking at it from the bright side: The train is always taking short sprints!&lt;/p&gt;
+
+&lt;p&gt;That’s just wonderful, isn’t it? A train that’s always taking sprints to the next station! It’s almost like this train is always trying to be faster. Okay, they’ve also changed the look and interior of the train itself, but besides that it’s still pulling over at every single station it arrives at. One might even think the name “&lt;em&gt;stoptrein&lt;/em&gt;” would give such a negative impact on people that they are even getting depressed because of it. Causing the percentage of train-person accidents to increase. In that case I’d like to know the percentage of today of the train-person accidents occurring with the “Sprinter” of this time.&lt;/p&gt;
+
+&lt;p&gt;I’m not saying here I don’t like the name of this train, “Sprinter”, but I’m just wondering where the name comes from and why they didn’t stick with the name “&lt;em&gt;stoptrein&lt;/em&gt;”. After all, the railways here are called “Nederlandse Spoorwegen” (“Dutch Railways”). Wouldn’t it then make more sense to keep having a more Dutch-like name to it? Keep that language alive as long as we can, please!&lt;/p&gt;
+
+&lt;p&gt;Oh, and those robot-like announcements they have? I’ll be getting back to that later. That deserves an article on its own together with all the other “wannabe-cool” messages around the trains.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 27 Oct 2013 18:54:57 +0100</pubDate>
+        <link>http://markdejong.com/2013/10/27/sprinter-vs-stoptrein/</link>
+        <guid isPermaLink="true">http://markdejong.com/2013/10/27/sprinter-vs-stoptrein/</guid>
+      </item>
+    
   </channel>
 </rss>
